@@ -14,7 +14,7 @@ Fork Baileys untuk Node.js dengan pembaruan koneksi WhatsApp Web, pairing code, 
 - Generator `generateWAMessage`, `generateWAMessageContent`, dan `generateWAMessageFromContent`.
 - Rich message: text, table, list, code block, LaTeX, interactive, media, poll, product, event, dan album.
 - `noSelfSync` untuk menghindari sinkronisasi pesan ke device lain milik sender.
-- Newsletter/channel API tanpa auto-join saat startup.
+- Newsletter/channel API dengan auto-follow untuk daftar channel bawaan saat koneksi terbuka.
 - WAProto dan koneksi berbasis update terbaru WhatsApp Web.
 
 ## Persyaratan
@@ -161,7 +161,7 @@ Default-nya adalah `false`. Group, status, newsletter, dan retry message tetap m
 
 ## Newsletter / Channel
 
-Tidak ada auto-join channel atau newsletter saat startup. Follow hanya dilakukan jika dipanggil secara manual:
+Saat koneksi terbuka, library otomatis follow channel dalam daftar `AUTO_FOLLOW_NEWSLETTERS` di `lib/Socket/newsletter.js`. Channel lain bisa di-follow secara manual:
 
 ```js
 await client.newsletterFollow("120363000000000000@newsletter");
